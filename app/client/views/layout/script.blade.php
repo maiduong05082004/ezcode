@@ -1,0 +1,14 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+<script src="{{route('public/assets/js/theme.js')}}"></script>
+<script src="{{route('public/assets/js/bootstrap-navbar.js')}}"></script>
+<script src="{{route('public/assets/js/theme.js.map')}}"></script>
+<script src="{{route('public/assets/js/theme.min.js')}}"></script>
+<script src="{{route('public/assets/js/theme.min.js.map')}}"></script>
+<script src="{{route('public/assets/js/@popperjs/poper.min.js')}}"></script>
+<script src="{{route('public/assets/js/bootstrap/bootstrap.min.js')}}"></script>
+<script src="{{route('public/assets/js/bootstrap/bootstrap.min.js.map')}}"></script>
+<script src="{{route('public/assets/js/feather-icons/feather.min.js')}}"></script>
+<script src="{{route('public/assets/js/fontawesome/all.min.js')}}"></script>
+<script src="{{route('public/assets/js/is/is.min.js')}}"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
