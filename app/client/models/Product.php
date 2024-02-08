@@ -50,12 +50,13 @@ class Product extends BaseModel
         $this->setQuery($query);
         $this->execute([$id]);
     }
-    public function getProductByCategory() {
+    public function getProductByCategory($categoryId) {
         $query = "SELECT products.*, categorys.name AS category_name 
                   FROM " . $this->table . " 
-                  LEFT JOIN categorys ON products.category = categorys.id";
+                  LEFT JOIN categorys ON products.category = categorys.id
+                  WHERE products.category = ?";
         $this->setQuery($query);
-        return $this->loadAllRows();
+        return $this->loadAllRows([$categoryId]);
     }
     
 }

@@ -59,12 +59,12 @@
  </span></button>
  <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
  <ul class="navbar-nav ms-auto pt-2 pt-lg-0 font-base">
- <li class="nav-item px-2"><a class="nav-link active" aria-current="page" href="index.html">Trang
+ <li class="nav-item px-2"><a class="nav-link active" aria-current="page" href="<?php echo \htmlentities(route('client/home_page')??'', ENT_QUOTES, 'UTF-8', false); ?>">Trang
  chủ</a></li>
  <li class="nav-item px-2"><a class="nav-link" aria-current="page" href="pricing.html">Giá</a>
  </li>
  <li class="nav-item px-2"><a class="nav-link" aria-current="page"
- href="web-development.html">Phát triển website</a></li>
+ href="<?php echo \htmlentities(route('client/product/list_product')??'', ENT_QUOTES, 'UTF-8', false); ?>">Các khóa học</a></li>
  <li class="nav-item px-2"><a class="nav-link" aria-current="page"
  href="user-research.html">Nghiên cứu</a></li>
  </ul><a class="btn btn-primary order-1 order-lg-0" href="#!">Đăng kí</a>
@@ -90,9 +90,9 @@
 
  <!-- ============================================-->
  <!-- <section> begin ============================-->
- <section class="content">
+ 
  <?php echo $this->yieldContent('content'); ?>
- </section>
+ 
  <!-- <section> close ============================-->
  <!-- ============================================-->
 

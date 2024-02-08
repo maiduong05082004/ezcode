@@ -67,6 +67,7 @@ $router->group(['prefix' => 'client'], function ($router) {
 
     $router->group(['prefix' => 'product'], function ($router) {
         $router->get('product_detail/{id}', [HomePageController::class, 'productDetail']);
+        $router->get('list_product', [HomePageController::class, 'listProduct']);
     });
 
 });
