@@ -4,6 +4,7 @@ use App\Admin\Controllers\CategoryController;
 use App\Admin\Controllers\CustomerController;
 use App\Admin\Controllers\ProductController;
 use App\Admin\Controllers\UserController;
+use App\Client\Controllers\UserController as  ClientUserController;
 use App\Client\Controllers\HomePageController;
 use Phroute\Phroute\RouteCollector;
 use Phroute\Phroute\Dispatcher;
@@ -64,12 +65,14 @@ $router->group(['prefix' => 'admin'], function ($router) {
 });
 $router->group(['prefix' => 'client'], function ($router) {
     $router->get('home_page', [HomePageController::class, 'index']);
-
+    $router->get('membership_package', [HomePageController::class, 'membership']);
     $router->group(['prefix' => 'product'], function ($router) {
         $router->get('product_detail/{id}', [HomePageController::class, 'productDetail']);
         $router->get('list_product', [HomePageController::class, 'listProduct']);
     });
-
+    $router->group(['prefix' => 'user'], function ($router) {
+        $router->get('register', [ClientUserController::class, 'register']);
+    });
 });
 // khu vực cần quan tâm -----------
 

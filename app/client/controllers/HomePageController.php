@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Client\Controllers;
-use App\Client\Models\{Product,category};
+use App\Client\Models\{Product,Category};
 class HomePageController extends BaseController
 {
     protected $Category;
     protected $Product;
     public function __construct()
     {
-        $this->Category = new category();
+        $this->Category = new Category;
         $this->Product=new Product;
     }  
     public function index() {
@@ -20,21 +20,18 @@ class HomePageController extends BaseController
         $this->render( 'product.productDetail',compact('Product'));
     }
     public function listProduct(){
-        // Lấy ID của danh mục từ URL
         $categoryId = $_GET['category'] ?? null;
     
-        // Nếu có ID danh mục, lấy sản phẩm theo danh mục
         if($categoryId) {
             $Products = $this->Product->getProductByCategory($categoryId);
         } else {
-            // Nếu không, lấy tất cả sản phẩm
             $Products = $this->Product->getProduct();
         }
-    
-        // Lấy tất cả danh mục
         $Categorys = $this->Category->getAllCategory();
-    
-        // Trả về view với dữ liệu sản phẩm và danh mục
         $this->render( 'product.listProduct',compact('Products','Categorys'));
     }
+    public function membership(){
+        $this->render( 'membership.membershipPackage');
+    }
 }
+

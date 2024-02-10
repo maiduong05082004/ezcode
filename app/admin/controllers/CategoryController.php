@@ -2,14 +2,14 @@
 
 namespace App\Admin\Controllers;
 
-use App\Admin\Models\category;
+use App\Admin\Models\Category;
 
 class CategoryController extends BaseController
 {
     protected $Category;
     public function __construct()
     {
-        $this->Category=new category;
+        $this->Category=new Category;
     }  
     function listCategory(){
         $Categorys = $this->Category->getAllCategory();

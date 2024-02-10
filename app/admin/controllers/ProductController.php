@@ -2,14 +2,14 @@
 
 namespace App\Admin\Controllers;
 
-use App\Admin\Models\{Product,category};
+use App\Admin\Models\{Product,Category};
 class ProductController extends BaseController
 {
     protected $Category;
     protected $Product;
     public function __construct()
     {
-        $this->Category = new category();
+        $this->Category = new Category;
         $this->Product=new Product;
     }  
     // function listProduct(){

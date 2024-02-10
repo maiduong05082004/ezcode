@@ -3,7 +3,7 @@ body {
     font-family: 'Tahoma';
 }
 .container {
-    width: 1050px;
+    width: 1750px;
     margin: 0 auto;
 }
 .header-top {
@@ -17,7 +17,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 5px 5px 30px;
+    padding: 17px 17px 17px 36px;
 }
 .menu {
     margin: 0;
@@ -189,7 +189,7 @@ img.product-img {
     width: 664px;
     height: 488px;
     margin: 50px auto;
-    padding: 20px;
+    padding: 20px 0px 20px 40px;
     box-shadow: 1px 1px 10px 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
 }
@@ -328,5 +328,8 @@ form {
 }
 /* admin */
 .right{
-    margin-left: 318px;
+    margin-left: 1036px;
+}
+.center{
+    text-align: center !important;
 }

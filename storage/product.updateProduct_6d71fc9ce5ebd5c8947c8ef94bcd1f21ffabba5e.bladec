@@ -4,14 +4,14 @@
 <?php $_shouldextend[1]=1; ?>
 <?php $this->startSection('content'); ?>
  <div class="admin-content">
- <h1>CHỈNH SỬA SẢN PHẨM</h1>
+ <h1>CHỈNH SỬA KHÓA HỌC</h1>
  <div class="row2 form_content">
  <form action="<?php echo \htmlentities(route('admin/product/edit_product', ['id' => $Product->id])??'', ENT_QUOTES, 'UTF-8', false); ?>" method="post" enctype="multipart/form-data">
  <div class="container-edit">
  <div class="form-section-add">
  <div class="input-group-add-2">
  <div class="left-box">
- <div class="email">Tên sản phẩm:</div>
+ <div class="email">Tên khóa học:</div>
  <input type="text" id="name" name="name" placeholder="nhập tên" value="<?php echo \htmlentities($Product->name??'', ENT_QUOTES, 'UTF-8', false); ?>" required>
  </div>
  <div class="right-box">
@@ -26,7 +26,7 @@
  </div>
  <div class="right-box">
  <div class="row2 mb10 form_content_container">
- <label> Loại sản phẩm </label> <br>
+ <label> Loại khóa học </label> <br>
  <select name="category" id="category">
  <?php $__currentLoopData = $Category; $this->addLoop($__currentLoopData);$this->getFirstLoop();
  foreach($__currentLoopData as $category): $loop = $this->incrementLoopIndices();  ?>

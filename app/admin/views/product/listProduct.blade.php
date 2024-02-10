@@ -1,16 +1,16 @@
 @extends('layout.main')
 @section('content')
 <div class="content">
-    <h1>DANH SÁCH SẢN PHẨM</h1>
+    <h1>DANH SÁCH KHÓA HỌC</h1>
     <div class="row2 form_content">
         <table class="product-table" border="1">
             <tr>
-                <th>TÊN SẢN PHẨM</th>
-                <th>Hình</th>
-                <th>Giá</th>
-                <th>Mô tả</th>
-                <th>Loại hàng</th>
-                <th>Chức năng</th>
+                <th class="center">TÊN KHÓA HỌC</th>
+                <th class="center">Hình</th>
+                <th class="center">Giá</th>
+                <th class="center">Mô tả</th>
+                <th class="center">Loại khóa học</th>
+                <th class="center">Chức năng</th>
             </tr>
             @foreach ($Products as $product)
             @php
@@ -23,7 +23,7 @@
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->describe }}</td>
                 <td>{{ $product->category_name }}</td>
-                <td>
+                <td class="center">
                     <a href="{{ route("admin/product/detail_product/$product->id") }}"><input type="button" value="Sửa" class="submit-btn"></a>
                     <a href="{{ route("admin/product/delete_product/$product->id") }}"><input type="button" value="Xóa" class="submit-btn"></a>
                 </td>

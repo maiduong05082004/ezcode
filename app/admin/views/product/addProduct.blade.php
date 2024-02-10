@@ -1,14 +1,14 @@
 @extends('layout.main')
 @section('content')
 <div class="admin-content">
-    <h1>Thêm sản phẩm</h1>
+    <h1>THÊM KHÓA HỌC</h1>
     <div class="row2 form_content ">
         <form action="{{ route('admin/product/create_product')}}" method="POST" enctype="multipart/form-data">
             <div class="container-add">
                 <div class="form-section-add">
                     <div class="input-group-add-2">
                         <div class="left-box">
-                            <div class="email">Tên sản phẩm</div>
+                            <div class="email">Tên khóa học</div>
                             <input type="text" id="name" name="name" placeholder="nhập tên">
                         </div>
                         <div class="right-box">
@@ -23,7 +23,7 @@
                         </div>
                         <div class="right-box">
                             <div class="row2 mb10 form_content_container">
-                                <label>Loại sản phẩm</label> <br>
+                                <label>Loại khóa học</label> <br>
                                 <select name="category" id="category">
                                     @foreach ($Category as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -41,7 +41,7 @@
                         <input class="submit-btn" type="submit" value="THÊM MỚI" name="addproduct">
                         <input class="submit-btn" type="reset" value="NHẬP LẠI" >
 
-                        <a href="{{route('product/list_product')}}"><input class="submit-btn" id="list" type="button" value="DANH SÁCH"></a>
+                        <a href="{{route('admin/product/list_product')}}"><input class="submit-btn" id="list" type="button" value="DANH SÁCH"></a>
                     </div>
                 </div>
             </div>
