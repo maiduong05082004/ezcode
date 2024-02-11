@@ -1,26 +1,26 @@
 <script>
-    // Get the modal
     var modal = document.querySelector('.modal-overlay');
-
-    // Get the <span> element that closes the modal
     var closeModal = document.querySelector('.close-modal');
+    var navbar = document.querySelector('.navbar'); // Tham chiếu đến navbar
 
-    // When the user clicks on <span> (x), close the modal
     closeModal.onclick = function() {
         modal.style.display = "none";
+        navbar.style.display = "flex"; // Hiển thị lại navbar
+        window.location.href = '/'; // Chuyển hướng về trang chủ
     }
 
-    // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
+            navbar.style.display = "flex"; // Hiển thị lại navbar
         }
     }
-    // Get the button that opens the modal
-    var openModalBtn = document.querySelector('.open-modal-btn');
 
-    // When the user clicks the button, open the modal 
-    openModalBtn.onclick = function() {
-        modal.style.display = "flex";
+    var openModalBtn = document.querySelector('.open-modal-btn');
+    if (openModalBtn) { // Kiểm tra nếu nút mở modal tồn tại
+        openModalBtn.onclick = function() {
+            modal.style.display = "flex";
+            navbar.style.display = "none"; // Ẩn navbar
+        }
     }
 </script>

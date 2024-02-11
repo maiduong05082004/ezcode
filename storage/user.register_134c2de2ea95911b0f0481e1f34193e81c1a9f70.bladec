@@ -20,7 +20,7 @@
  <input type="hidden" name="role" value="3">
  <div class="box">
  <input type="checkbox" id="agree" name="agree" required>
- <label for="agree">Tôi đồng ý với Điều Khoản Sử Dụng Của LAPDTECH</label>
+ <label for="agree">Tôi đồng ý với Điều Khoản Sử Dụng Của DUONGCOURSES</label>
  </div>
  <input type="submit" id="register-submit" value="Đăng ký" name="addaccount">
  <?php
