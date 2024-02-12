@@ -18439,7 +18439,7 @@ ul {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1021;
+    z-index: 1;
 }
 .registration-form>.modal-overlay>.register-modal {
     width: 400px;
@@ -18447,6 +18447,18 @@ ul {
     padding: 20px 20px 20px 37px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.sticky-top-mysetup{
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.close-modal-btn {
+  float: right;
+  font-size: 1.2em;
+  cursor: pointer;
+  border: none;
+  background: none;
 }
 
 .registration-form>.modal-overlay>.register-modal>.close-modal {
