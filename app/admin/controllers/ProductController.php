@@ -2,31 +2,37 @@
 
 namespace App\Admin\Controllers;
 
-use App\Admin\Models\{Product,Category};
+use App\Admin\Models\{Product, Category, UserBuyProduct};
+
 class ProductController extends BaseController
 {
     protected $Category;
     protected $Product;
+    protected $UserBuyProduct;
     public function __construct()
     {
         $this->Category = new Category;
-        $this->Product=new Product;
-    }  
+        $this->Product = new Product;
+        $this->UserBuyProduct = new UserBuyProduct;
+    }
     // function listProduct(){
     //     $Products = $this->Product->getProduct();
     //     $Category = $this->Category->getAllCategory();
     //     $this->render('product.listProduct', compact('Products','Category'));
     // }
-    function listProduct(){
+    function listProduct()
+    {
         $Products = $this->Product->getProductByCategory();
         $this->render('product.listProduct', compact('Products'));
     }
-    
-    public function addProduct(){
+
+    public function addProduct()
+    {
         $Category = $this->Category->getAllCategory();
-        $this->render('product.addProduct',compact('Category'));
+        $this->render('product.addProduct', compact('Category'));
     }
-    public function createProduct(){
+    public function createProduct()
+    {
         if (isset($_POST["addproduct"]) && ($_POST["addproduct"])) {
             $name = $_POST['name'] ?? '';
             $image = $_FILES['image']['name'];
@@ -48,21 +54,20 @@ class ProductController extends BaseController
                 $this->Product->insertProduct($name, $image, $price, $describe, $category);
                 echo "<script>alert('Thêm sản phẩm thành công'); window.location.href='" . BASE_URL . "admin/product/list_product';</script>";
             }
-            
         } else {
             $this->render('product.addProduct');
         }
-    
     }
-    public function detailProduct($id) {
-            $Product = $this->Product->loadOneProduct($id);
-            $Category = $this->Category->getAllCategory();
-            $this->render('product.updateProduct', compact('Product','Category'));
-        
+    public function detailProduct($id)
+    {
+        $Product = $this->Product->loadOneProduct($id);
+        $Category = $this->Category->getAllCategory();
+        $this->render('product.updateProduct', compact('Product', 'Category'));
     }
-    public function editProduct(){
+    public function editProduct()
+    {
         if (isset($_POST["updateproduct"])) {
-            $id=$_POST['id'];
+            $id = $_POST['id'];
             $name = $_POST['name'] ?? '';
             $price = $_POST['price'] ?? '';
             $describe = $_POST['describe'] ?? '';
@@ -84,12 +89,18 @@ class ProductController extends BaseController
                 echo "<script>alert('sửa sản phẩm thành công'); window.location.href='" . BASE_URL . "admin/product/list_product';</script>";
             }
         }
-    $this->render('product.updateProduct', compact('Product'));
-    
+        $this->render('product.updateProduct', compact('Product'));
     }
-    public function deleteProduct($id){
-            $this-> Product->deleteOneProduct($id);
-            echo "<script>alert('xóa sản phẩm thành công'); window.location.href='" . BASE_URL . "admin/product/list_product';</script>";
-        }
+    public function deleteProduct($id)
+    {
+        $this->Product->deleteOneProduct($id);
+        echo "<script>alert('xóa sản phẩm thành công'); window.location.href='" . BASE_URL . "admin/product/list_product';</script>";
     }
-    
+    public function listProductByUser($id) {
+        $Products = $this->UserBuyProduct->listProductByUser($id);
+        $Category = $this->Category->getAllCategory();
+
+        $this->render('product.listProductByUser', compact('Products', 'Category'));
+    }
+        
+}

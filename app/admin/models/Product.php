@@ -49,6 +49,6 @@ class Product extends BaseModel
         $this->setQuery($query);
         return $this->loadAllRows();
     }
-    
+
 }
 ?>

@@ -11,6 +11,7 @@
                 <th>Email</th>
                 <th>Địa chỉ</th>
                 <th>Số điện thoại</th>
+                <th>Hội viên</th>
                 <th>Chức năng</th>
             </tr>
             @foreach ($Users as $user)
@@ -24,9 +25,11 @@
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->address }}</td>
                 <td>{{ $user->tel }}</td>
+                <td>{{$user->membership_type}}</td>
                 <td>
                     <a href="{{ route("admin/user/detail_user/$user->id") }}"><input type="button" value="Sửa" class="submit-btn"></a>
                     <a href="{{ route("admin/user/delete_user/$user->id") }}"><input type="button" value="Xóa" class="submit-btn"></a>
+                    <a href="{{ route("admin/product/list_product__by_user/$user->id") }}"><input type="button" value="khóa học đã mua" class="submit-btn"></a>
                 </td>
             </tr>
             @endforeach

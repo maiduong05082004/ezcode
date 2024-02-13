@@ -6,10 +6,18 @@ class User extends BaseModel
     protected $table = 'users';
 
     public function getUser() {
-        $query = "SELECT * FROM " . $this->table;
+        $query = "SELECT *, 
+                    CASE 
+                        WHEN membership = 1 THEN 'VIP MEMBER'
+                        WHEN membership = 2 THEN 'GOLD MEMBER'
+                        WHEN membership = 3 THEN 'UNLIMITED MEMBER'
+                        ELSE 'UNKNOWN'
+                    END AS membership_type
+                  FROM " . $this->table;
         $this->setQuery($query);
         return $this->loadAllRows();
     }
+    
 
     
     public function loadOneUser($id) {

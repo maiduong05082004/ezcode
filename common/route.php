@@ -45,6 +45,7 @@ $router->group(['prefix' => 'admin'], function ($router) {
         $router->get('detail_product/{id}', [ProductController::class, 'detailProduct']);
         $router->post('edit_product', [ProductController::class, 'editProduct']);
         $router->get('delete_product/{id}', [ProductController::class, 'deleteProduct']);
+        $router->get('list_product__by_user/{id}', [ProductController::class, 'listProductByUser']);
     });
     $router->group(['prefix' => 'category'], function ($router) {
         $router->get('list_category', [CategoryController::class, 'listCategory']);
@@ -67,8 +68,8 @@ $router->group(['prefix' => 'client'], function ($router) {
     $router->get('home_page', [HomePageController::class, 'index']);
     $router->get('membership_package', [HomePageController::class, 'membership']);
     $router->group(['prefix' => 'product'], function ($router) {
-        $router->get('product_detail/{id}', [HomePageController::class, 'productDetail']);
-        $router->get('list_product', [HomePageController::class, 'listProduct']);
+    $router->get('product_detail/{id}', [HomePageController::class, 'productDetail']);
+    $router->get('list_product', [HomePageController::class, 'listProduct']);
     });
     $router->group(['prefix' => 'user'], function ($router) {
         $router->get('register', [ClientUserController::class, 'register']);
