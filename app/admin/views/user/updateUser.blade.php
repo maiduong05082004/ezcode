@@ -1,5 +1,5 @@
 @php
-    $hinhpart = 'public/images/' . $User->image;
+    $hinhpart = 'public/assets/img/courses/' . $User->image;
 @endphp
 @extends('layout.main')
 @section('content')
@@ -31,6 +31,18 @@
                 <div class="right-box">
                     <div class="Email">Địa chỉ :</div>
                     <input type="text" id="address-user" name="address" placeholder="" value="{{$User->address}}">
+                </div>
+            </div>
+            <div class="input-group-add-2">
+                <div class="left-box">
+                    <div class="membership">Hội viên :</div>
+                    <select name="membership" id="membership">
+                        @foreach ($Memberships as $Membership)
+                        <option value="{{ $Membership->id }}"
+                            {{ $User->membership == $Membership->id ? 'selected' : '' }}>{{ $Membership->name }}
+                        </option>
+                    @endforeach
+                    </select>
                 </div>
             </div>
             <input type="hidden" name="id" value="{{ $User->id }}">

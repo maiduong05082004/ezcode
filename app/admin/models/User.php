@@ -11,7 +11,7 @@ class User extends BaseModel
                         WHEN membership = 1 THEN 'VIP MEMBER'
                         WHEN membership = 2 THEN 'GOLD MEMBER'
                         WHEN membership = 3 THEN 'UNLIMITED MEMBER'
-                        ELSE 'UNKNOWN'
+                        ELSE 'Chưa đăng kí'
                     END AS membership_type
                   FROM " . $this->table;
         $this->setQuery($query);
@@ -25,24 +25,24 @@ class User extends BaseModel
         $this->setQuery($query);
         return $this->loadRow([$id]);
     }
-    public function insertUser($name, $image, $email, $address, $tel) {
-        $query = "INSERT INTO `$this->table` (`name`, `image`, `email`,  `address`, `tel`) VALUES (?, ?, ?, ?,?) ";
+    public function insertUser($name, $image, $email, $address, $tel, $password, $username, $membership) {
+        $query = "INSERT INTO `$this->table` (`name`, `image`, `email`,  `address`, `tel`, `password`, `username`, `membership`) VALUES (?, ?, ?, ?,?,?,?,?) ";
         $this->setQuery($query);
-        return $this->execute([$name, $image, $email, $address, $tel]);
+        return $this->execute([$name, $image, $email, $address, $tel, $password, $username, $membership]);
     }
 
-    public function updateUser($id,$name, $image, $email, $address, $tel) {
+    public function updateUser($id,$name, $image, $email, $address, $tel, $password, $username, $membership) {
         if($image!="")
         {
-            $query = "UPDATE `$this->table` SET `name` = ?, `image` = ?, `email` = ?, `address` = ?, `tel` = ? WHERE `id` = ?";
+            $query = "UPDATE `$this->table` SET `name` = ?, `image` = ?, `email` = ?, `address` = ?, `tel` = ?, `password` = ?, `username` = ?, `membership` = ? WHERE `id` = ?";
             $this->setQuery($query);
-            return $this->execute([$name, $image,  $email , $address, $tel, $id]);
+            return $this->execute([$name, $image,  $email , $address, $tel, $password, $username, $membership, $id]);
         }
         else
         {
-            $query = "UPDATE `$this->table` SET `name` = ?, `email` = ?, `address` = ?, `tel` = ? WHERE `id` = ?";
+            $query = "UPDATE `$this->table` SET `name` = ?, `email` = ?, `address` = ?, `tel` = ?, `password` = ?, `username` = ?, `membership` = ? WHERE `id` = ?";
             $this->setQuery($query);
-            return $this->execute([$name,  $email , $address, $tel, $id]);
+            return $this->execute([$name, $email , $address, $tel, $password, $username, $membership, $id]);
         }
         
     }

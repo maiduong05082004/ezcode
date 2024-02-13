@@ -12,7 +12,17 @@
  <div class="form-section-add">
  <div class="input-group-add-2">
  <div class="left-box">
- <div class="name">Tên :</div>
+ <div class="username">Tên tài khoản :</div>
+ <input type="text" id="username" name="username" placeholder="duongmai2004">
+ </div>
+ <div class="right-box">
+ <div class="password">Mật khẩu :</div>
+ <input type="password" id="password" name="password" placeholder="Duong2004@">
+ </div>
+ </div>
+ <div class="input-group-add-2">
+ <div class="left-box">
+ <div class="name">Tên người dùng:</div>
  <input type="text" id="name" name="name" placeholder="Tên">
  </div>
  <div class="right-box">
@@ -28,6 +38,17 @@
  <div class="right-box">
  <div class="Email">Địa chỉ :</div>
  <input type="text" id="address-user" name="address" placeholder="">
+ </div>
+ </div>
+ <div class="input-group-add-2">
+ <div class="left-box">
+ <div class="membership">Hội viên :</div>
+ <select name="membership" id="membership">
+ <option value="0">Chưa đăng kí</option>
+ <option value="1">VIP MEMBER</option>
+ <option value="2">GOLD MEMBER</option>
+ <option value="3">UNLIMITED MEMBER</option>
+ </select>
  </div>
  </div>
  <input class="submit-btn" type="submit" value="Thêm tài khoản" name="adduser" id="show-user">
