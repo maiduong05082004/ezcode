@@ -9,6 +9,7 @@ class CategoryController extends BaseController
     protected $Category;
     public function __construct()
     {
+        $this->checkAdminRole();
         $this->Category=new Category;
     }  
     function listCategory(){

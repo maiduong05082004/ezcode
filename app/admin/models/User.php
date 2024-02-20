@@ -46,12 +46,11 @@ class User extends BaseModel
         }
         
     }
-
-
     public function deleteOneUser($id) {
         $query = "DELETE FROM $this->table WHERE id = ?";
         $this->setQuery($query);
         $this->execute([$id]);
     }
+    
 }
 ?>

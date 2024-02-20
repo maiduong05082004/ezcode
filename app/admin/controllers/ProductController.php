@@ -11,6 +11,7 @@ class ProductController extends BaseController
     protected $UserBuyProduct;
     public function __construct()
     {
+        $this->checkAdminRole();
         $this->Category = new Category;
         $this->Product = new Product;
         $this->UserBuyProduct = new UserBuyProduct;

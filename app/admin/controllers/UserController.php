@@ -10,6 +10,7 @@ class UserController extends BaseController
     protected $Membership;
     public function __construct()
     {
+        $this->checkAdminRole();
         $this->User=new User;
         $this->Membership=new Membership;
     }  
