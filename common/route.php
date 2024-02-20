@@ -1,16 +1,14 @@
 <?php
 
 use App\Admin\Controllers\CategoryController;
-use App\Admin\Controllers\CustomerController;
 use App\Admin\Controllers\ProductController;
 use App\Admin\Controllers\UserController;
 use App\Client\Controllers\UserController as  ClientUserController;
 use App\Client\Controllers\HomePageController;
+use App\Client\Controllers\ProductController as ClientProductController;
 use Phroute\Phroute\RouteCollector;
 use Phroute\Phroute\Dispatcher;
-
 $url = !isset($_GET['url']) ? "/" : $_GET['url'];
-
 $router = new RouteCollector();
 /*request method: 
 - get: kéo dữ liệu từ sv về
@@ -66,13 +64,15 @@ $router->group(['prefix' => 'admin'], function ($router) {
 });
 $router->group(['prefix' => 'client'], function ($router) {
     $router->get('home_page', [HomePageController::class, 'index']);
-    $router->get('membership_package', [HomePageController::class, 'membership']);
     $router->group(['prefix' => 'product'], function ($router) {
-    $router->get('product_detail/{id}', [HomePageController::class, 'productDetail']);
-    $router->get('list_product', [HomePageController::class, 'listProduct']);
+        $router->get('membership_package', [ClientProductController::class, 'membership']);
+        $router->get('product_detail/{id}', [ClientProductController::class, 'productDetail']);
+        $router->get('list_product', [ClientProductController::class, 'listProduct']);
+        $router->get('list_product_by_user/{id}',[ClientProductController::class,'listProductByUser']) ;
     });
     $router->group(['prefix' => 'user'], function ($router) {
-        $router->get('register', [ClientUserController::class, 'register']);
+        $router->any('register', [ClientUserController::class, 'register']);
+        $router->any('login', [ClientUserController::class, 'login']);
     });
 });
 // khu vực cần quan tâm -----------

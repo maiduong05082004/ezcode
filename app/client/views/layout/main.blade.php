@@ -59,15 +59,19 @@
                     </span></button>
                 <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto pt-2 pt-lg-0 font-base">
-                        <li class="nav-item px-2"><a class="nav-link active" aria-current="page" href="{{route('client/home_page')}}">Trang
+                        <li class="nav-item px-2"><a class="nav-link active" aria-current="page"
+                                href="{{ route('client/home_page') }}">Trang
                                 chủ</a></li>
-                        <li class="nav-item px-2"><a class="nav-link" aria-current="page" href="{{route('client/membership_package')}}">Gói thành viên</a>
+                        <li class="nav-item px-2"><a class="nav-link" aria-current="page"
+                                href="{{ route('client/product/membership_package') }}">Gói thành viên</a>
                         </li>
                         <li class="nav-item px-2"><a class="nav-link" aria-current="page"
-                                href="{{route('client/product/list_product')}}">Các khóa học</a></li>
+                                href="{{ route('client/product/list_product') }}">Các khóa học</a></li>
                         <li class="nav-item px-2"><a class="nav-link" aria-current="page"
-                                href="user-research.html">Khóa đang học</a></li>
-                    </ul><a class="btn btn-primary order-1 order-lg-0" href="{{route('client/user/register')}}">Đăng kí</a>
+                                href="{{ route('client/product/list_product_by_user/2') }}">Khóa đang học</a></li>
+                    </ul>
+                    <a class="btn btn-primary order-1 order-lg-0 mr-3" href="{{ route('client/user/register') }}">Đăng kí</a>
+                    <a class="btn btn-primary order-1 order-lg-0" href="{{ route('client/user/login') }}">Đăng nhập</a>
                     <form class="d-flex my-3 d-block d-lg-none">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                         <button class="btn btn-outline-primary" type="submit">Search</button>
@@ -90,9 +94,9 @@
 
         <!-- ============================================-->
         <!-- <section> begin ============================-->
-          
-         @yield('content')
-        
+
+        @yield('content')
+
         <!-- <section> close ============================-->
         <!-- ============================================-->
 
