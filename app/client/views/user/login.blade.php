@@ -6,7 +6,7 @@
             <span class="close-modal">&times;</span>
             <h2>Đăng nhập</h2>
             <form action="{{ route('client/user/login') }}" method="post" enctype="multipart/form-data">
-                @csrf <!-- Thêm CSRF token -->
+                @csrf 
                 <input type="text" id="login-type" name="nameaccount" placeholder="Tên đăng nhập" required>
                 <input type="password" id="login-type" name="password" placeholder="Mật khẩu" required>
                 <input type="submit" id="login-submit" value="Đăng nhập" name="loginaccount">

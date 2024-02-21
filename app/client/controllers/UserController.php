@@ -67,6 +67,10 @@ class UserController extends BaseController
         }
         $this->render('user.login', ['thongbao' => $thongbao]);
     }
-    
+    public function logout(){
+        session_unset();
+        echo "<script>window.history.back();</script>";
+    }
+
     
 }

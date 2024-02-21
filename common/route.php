@@ -73,6 +73,7 @@ $router->group(['prefix' => 'client'], function ($router) {
     $router->group(['prefix' => 'user'], function ($router) {
         $router->any('register', [ClientUserController::class, 'register']);
         $router->any('login', [ClientUserController::class, 'login']);
+        $router->get('logout', [ClientUserController::class,'logout']);
     });
 });
 // khu vực cần quan tâm -----------

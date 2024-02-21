@@ -69,9 +69,30 @@
                                 href="{{ route('client/product/list_product') }}">Các khóa học</a></li>
                         <li class="nav-item px-2"><a class="nav-link" aria-current="page"
                                 href="{{ route('client/product/list_product_by_user/2') }}">Khóa đang học</a></li>
+                        @if (isset($_SESSION['user']) && is_array($_SESSION['user']))
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Chào, {{ $_SESSION['user']['name'] }}
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Quên mật khẩu</a></li>
+                                    <li><a class="dropdown-item" href="#">Thông tin cá nhân</a></li>
+                                    <li><a class="dropdown-item" href="#">Khóa học của tôi</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="{{route('client/user/logout')}}">Thoát</a></li>
+                                </ul>
+                            </li>
+                        @else
+                            <a class="btn btn-primary order-1 order-lg-0 mr-3"
+                                href="{{ route('client/user/register') }}">Đăng
+                                kí</a>
+                            <a class="btn btn-primary order-1 order-lg-0" href="{{ route('client/user/login') }}">Đăng
+                                nhập</a>
+                        @endif
                     </ul>
-                    <a class="btn btn-primary order-1 order-lg-0 mr-3" href="{{ route('client/user/register') }}">Đăng kí</a>
-                    <a class="btn btn-primary order-1 order-lg-0" href="{{ route('client/user/login') }}">Đăng nhập</a>
                     <form class="d-flex my-3 d-block d-lg-none">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                         <button class="btn btn-outline-primary" type="submit">Search</button>
