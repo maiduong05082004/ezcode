@@ -18600,6 +18600,17 @@ ul {
 .mr-3{
   margin-right: 15px;
 }
+.border-none {
+  border: none;
+}
+
+.border-bottom-custom {
+  border-bottom: 1px solid #afafaf;
+}
+.b-n-f:focus{
+  border-bottom: 1px solid #afafaf;
+  outline: none;
+}
 /*-----------------------------------------------
 |   User Styles
 -----------------------------------------------*/

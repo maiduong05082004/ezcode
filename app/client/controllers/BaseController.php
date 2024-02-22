@@ -9,6 +9,12 @@ class BaseController{
         $blade = new BladeOne($viewDir,$storageDir, BladeOne::MODE_DEBUG);
         echo $blade->run($viewFile, $data);
     }
+    protected function checkSESSION() {
+        if(!isset($_SESSION['user']) && empty($_SESSION['user'])){
+            header("Location: " . BASE_URL . "client/user/login");
+            exit;
+        }
+    }
 }
 
 ?>

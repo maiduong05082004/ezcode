@@ -5,6 +5,7 @@ use App\Admin\Controllers\ProductController;
 use App\Admin\Controllers\UserController;
 use App\Client\Controllers\UserController as  ClientUserController;
 use App\Client\Controllers\HomePageController;
+use App\Client\Controllers\PaymentController;
 use App\Client\Controllers\ProductController as ClientProductController;
 use Phroute\Phroute\RouteCollector;
 use Phroute\Phroute\Dispatcher;
@@ -74,6 +75,10 @@ $router->group(['prefix' => 'client'], function ($router) {
         $router->any('register', [ClientUserController::class, 'register']);
         $router->any('login', [ClientUserController::class, 'login']);
         $router->get('logout', [ClientUserController::class,'logout']);
+    });
+    $router->group(['prefix' => 'payment'], function ($router) {
+        $router->post('in_payment', [PaymentController::class, 'inPayment']);
+
     });
 });
 // khu vực cần quan tâm -----------

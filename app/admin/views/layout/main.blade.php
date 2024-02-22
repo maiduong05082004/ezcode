@@ -19,6 +19,7 @@
                 <li><a href="{{route('admin/category/list_category')}}">Quản lý danh mục</a></li>
                 <li><a href="{{route('admin/product/list_product')}}">Quản lý khóa học</a></li>
                 <li><a href="{{route('admin/user/list_user')}}">Quản lý người dùng</a></li>
+                <li><a href="{{route('admin/user/list_user')}}">Quản lý hóa đơn</a></li>
                 <li><a href="#">Doanh Thu</a></li>
                 <li class="right"><a href="{{route('client/home_page')}}">Trang chủ</a></li>
             </ul>
