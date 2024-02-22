@@ -67,9 +67,10 @@
                         </li>
                         <li class="nav-item px-2"><a class="nav-link" aria-current="page"
                                 href="{{ route('client/product/list_product') }}">Các khóa học</a></li>
-                        <li class="nav-item px-2"><a class="nav-link" aria-current="page"
-                                href="{{ route('client/product/list_product_by_user/2') }}">Khóa đang học</a></li>
+                        <li class="nav-item px-2">
                         @if (isset($_SESSION['user']) && is_array($_SESSION['user']))
+                            <a class="nav-link" aria-current="page" href="{{ route('client/product/list_product_by_user/' . $_SESSION['user']['id'])  }}">Khóa đang học</a>
+                        </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -86,6 +87,8 @@
                                 </ul>
                             </li>
                         @else
+                        <a class="nav-link" aria-current="page" href="{{ route('client/product/list_product_by_user/client')  }}">Khóa đang học</a>
+                        </li>
                             <a class="btn btn-primary order-1 order-lg-0 mr-3"
                                 href="{{ route('client/user/register') }}">Đăng
                                 kí</a>

@@ -33,9 +33,23 @@ class ProductController extends BaseController
     public function membership(){
         $this->render( 'membership.membershipPackage');
     }
+    // public function listProductByUser($id) {
+    //     $Products = $this->UserBuyProduct->listProductByUser($id);
+    //     $User = $this->User->loadOneUser($id);
+    //     $this->render('product.listProductByUser', compact('Products','User'));
+    // }
     public function listProductByUser($id) {
         $Products = $this->UserBuyProduct->listProductByUser($id);
         $User = $this->User->loadOneUser($id);
-        $this->render('product.listProductByUser', compact('Products','User'));
+        if ($id=="client") {
+            $message = 'Bạn cần đăng nhập để xem khóa học đang học.';
+        } elseif (empty($Products)) {
+            $message = 'Bạn chưa đăng kí khóa học nào.';
+        } else {
+            $message = '';
+        }
+    
+        $this->render('product.listProductByUser', compact('Products', 'User', 'message'));
     }
+    
 }
