@@ -1,0 +1,14 @@
+partnerCode=MOMOBKUN20180529
+&orderId=707667
+&requestId=1708674839
+&amount=10000
+&orderInfo=Thanh+to%C3%A1n+qua+MoMo
+&orderType=momo_wallet
+&transId=3991453595
+&resultCode=0
+&message=Successful.
+&payType=napas
+&responseTime=1708675539340
+&extraData=
+&signature=a64a0a7c3dc59494364b5deeff2c36c8299921b9a5ac274eabe230ef1a568e63
+&paymentOption=momo

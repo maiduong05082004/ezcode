@@ -78,6 +78,8 @@ $router->group(['prefix' => 'client'], function ($router) {
     });
     $router->group(['prefix' => 'payment'], function ($router) {
         $router->post('in_payment', [PaymentController::class, 'inPayment']);
+        $router->any('online_checkout', [PaymentController::class, 'onlineCheckout']);
+        $router->any('billcomfim', [PaymentController::class, 'billcomfim']);
 
     });
 });

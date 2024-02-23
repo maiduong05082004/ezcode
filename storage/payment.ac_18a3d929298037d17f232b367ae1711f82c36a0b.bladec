@@ -32,42 +32,29 @@
  <div class="col-md-8"><img class="w-100" src="<?php echo \htmlentities(route($hinhpart)??'', ENT_QUOTES, 'UTF-8', false); ?>" alt="..." />
  </div>
  <div class="col-md-4">
- <form onsubmit="return comfirm('Xác nhận đặt hàng')" method="POST"
- action="<?php echo \htmlentities(route('client/payment/online_checkout')??'', ENT_QUOTES, 'UTF-8', false); ?>">
  <div class="card">
  <ul class="list-group list-group-flush">
- <li class="list-group-item text-center"><strong>Vui lòng kiểm tra thông tin Khách hàng,
- thông tin Giỏ hàng trước khi Đặt hàng.</strong></li>
- <li class="list-group-item"><strong>Danh mục </strong>: <?php echo \htmlentities($Product->category_name??'', ENT_QUOTES, 'UTF-8', false); ?>
-
- </li><input type="hidden" name="product_price" value="<?php echo \htmlentities($Product->price??'', ENT_QUOTES, 'UTF-8', false); ?>">
+ <li class="list-group-item text-center"><strong>Vui lòng kiểm tra thông tin Khách hàng, thông tin Giỏ hàng trước khi Đặt hàng.</strong></li>
+ <li class="list-group-item"><strong>Danh mục </strong>: <?php echo \htmlentities($Product->category_name??'', ENT_QUOTES, 'UTF-8', false); ?></li>
  <li class="list-group-item"><strong>Giá khóa học</strong>:<?php echo \htmlentities($Product->price??'', ENT_QUOTES, 'UTF-8', false); ?></li>
  <li class="list-group-item"><strong>Tên</strong>:</li>
- <li class="list-group-item"><input type="text"
- class="border-none border-bottom-custom b-n-f" id="name" name="name"
- value="<?php echo \htmlentities($User->name??'', ENT_QUOTES, 'UTF-8', false); ?>" /></li>
+ <li class="list-group-item"><input type="text" class="border-none border-bottom-custom b-n-f" id="name" value="<?php echo \htmlentities($User->name??'', ENT_QUOTES, 'UTF-8', false); ?>" /></li>
  <li class="list-group-item"><strong>Email</strong>:</li>
- <li class="list-group-item"><input type="text"
- class="border-none border-bottom-custom b-n-f" id="email" name="email"
- value="<?php echo \htmlentities($User->email??'', ENT_QUOTES, 'UTF-8', false); ?>" /></li>
+ <li class="list-group-item"><input type="text" class="border-none border-bottom-custom b-n-f" id="email" value="<?php echo \htmlentities($User->email??'', ENT_QUOTES, 'UTF-8', false); ?>" /></li>
  <li class="list-group-item"><strong>Địa chỉ</strong>:</li>
- <li class="list-group-item"><input type="text"
- class="border-none border-bottom-custom b-n-f" id="address" name="address"
- value="<?php echo \htmlentities($User->address??'', ENT_QUOTES, 'UTF-8', false); ?>" /></li>
+ <li class="list-group-item"><input type="text" class="border-none border-bottom-custom b-n-f" id="address" value="<?php echo \htmlentities($User->address??'', ENT_QUOTES, 'UTF-8', false); ?>" /></li>
  <li class="list-group-item"><strong>Số điện thoại</strong>: </li>
- <li class="list-group-item"><input type="text"
- class="border-none border-bottom-custom b-n-f" id="tel" name="tel"
- value="<?php echo \htmlentities($User->tel??'', ENT_QUOTES, 'UTF-8', false); ?>" /></li>
+ <li class="list-group-item"><input type="text" class="border-none border-bottom-custom b-n-f" id="tel" value="<?php echo \htmlentities($User->tel??'', ENT_QUOTES, 'UTF-8', false); ?>" /></li>
  <li class="list-group-item text-center">
- <input type="submit" class="btn btn-primary" name="payUrl" value="Thanh toán với MOMO">
- <input type="submit" class="btn btn-primary" name="COD" value="Thanh toán bằng COD">
+ <a href="#" class="btn btn-primary">Mua ngay</a>
  </li>
  </ul>
  </div>
- </form>
  </div>
  </div>
- </div>
+ </div><!-- end of .container-->
+ <?php /* nút đăng kí  */ ?>
+ 
  </section>
  </div>
 <?php $this->stopSection(); ?>
