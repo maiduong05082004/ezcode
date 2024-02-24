@@ -57,8 +57,7 @@ class UserController extends BaseController
                     if ($_SESSION['user']['role'] == 1) {
                         header("Location: " . BASE_URL . "admin/product/list_product");
                     } else {
-                        echo "<script>window.history.back();</script>";
-                        exit; 
+                        echo "<script> window.history.back(); </script>";
                     }
                 } else {
                     $thongbao = "Tài khoản hoặc mật khẩu không đúng!";

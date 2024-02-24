@@ -96,7 +96,10 @@
                                 <li class="list-group-item"><strong>Danh mục </strong>: {{ $Product->category_name }}</li>
                                 <li class="list-group-item"><strong>Giá khóa học</strong>:{{ $Product->price }}</li>
                                 <li class="list-group-item text-center">
-                                    <a href="{{route('client/payment/in_payment')}}" class="btn btn-primary">Đăng kí khóa học ngay</a> 
+                                    <form method="POST" action="{{ route('client/payment/in_payment') }}">
+                                        <input type="hidden" name="product_id" value="{{ $Product->id }}">
+                                        <button type="submit" class="btn btn-warning">Đăng kí khóa học ngay</button>
+                                    </form>
                                 </li>
                                 <li class="list-group-item text-center"><img
                                         src="{{ route('public/assets/img/gallery/searching.png') }}" width="78"

@@ -51,7 +51,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light sticky-top-mysetup py-3 d-block"
             data-navbar-on-scroll="data-navbar-on-scroll">
-            <div class="container"><a class="navbar-brand" href="index.html"><img
+            <div class="container"><a class="navbar-brand" href="{{route('client/home_page')}}"><img
                         src="{{ route('public/assets/img/gallery/logo-n.png') }}" height="45" alt="logo" /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

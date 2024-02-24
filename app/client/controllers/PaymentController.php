@@ -2,7 +2,7 @@
 
 namespace App\Client\Controllers;
 
-use App\Client\Models\{Product, Category, User};
+use App\Client\Models\{Product, Category, User,};
 
 class PaymentController extends BaseController
 {
