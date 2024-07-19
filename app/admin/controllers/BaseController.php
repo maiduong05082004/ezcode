@@ -17,7 +17,7 @@ class BaseController{
         if ($_SESSION['user']['role'] != 1) {
             echo "<script>
                 alert('Bạn không có quyền truy cập vào trang này.');
-                window.location.href = '".BASE_URL."client/home_page';
+                window.location.href = '".BASE_URL."';
               </script>";
             exit;
         }

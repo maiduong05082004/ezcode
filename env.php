@@ -4,9 +4,9 @@
 //khi cần thay đổi một giá trị cấu hình thì bạn chỉ cần thay đổi tệp env
 //=>giảm rui ro lỗi và quản lý cấu hình dễ dàng
 session_start();
-const BASE_URL="http://localhost/php/xuongezcode/test/";
+const BASE_URL="http://localhost/php/xuongezcode/";
 const DBHOST= "localhost";
-const DBNAME = "ezcode"; //username database
+const DBNAME = "ezcode1"; //username database
 const DBCHARSET = "utf8";
 const DBUSER = "root";
 const DBPASS ="";

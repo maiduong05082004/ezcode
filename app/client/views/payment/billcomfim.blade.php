@@ -26,7 +26,7 @@
         <li class="list-group-item"><strong>Thông điệp:</strong> {{ $message }}</li>
     </ul>
       <div class="mt-4">
-        <a href="{{route('client/home_page')}}" class="btn btn-primary">Về trang chủ</a>
+        <a href="{{route('')}}" class="btn btn-primary">Về trang chủ</a>
       </div>
     </div>
   </div>

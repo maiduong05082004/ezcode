@@ -2,13 +2,14 @@
 
 namespace App\Client\Controllers;
 
-use App\Client\Models\{Product, Category, User,};
+use App\Client\Models\{Product, Category, User, UserBuyProduct};
 
 class PaymentController extends BaseController
 {
     protected $Category;
     protected $Product;
     protected $User;
+    protected $UserBuyProduct;
 
     public function __construct()
     {
@@ -16,6 +17,7 @@ class PaymentController extends BaseController
         $this->Category = new Category;
         $this->Product = new Product;
         $this->User = new User;
+        $this->UserBuyProduct = new UserBuyProduct;
     }
 
     public function inPayment()
@@ -34,6 +36,14 @@ class PaymentController extends BaseController
         $transId = $_GET['transId'] ?? 'Không có dữ liệu';
         $resultCode = $_GET['resultCode'] ?? 'Không có dữ liệu';
         $message = $_GET['message'] ?? 'Không có dữ liệu';
+
+        // Lưu thông tin giao dịch vào bảng user_buy_products
+        if ($resultCode == 0) { // Nếu giao dịch thành công
+            $userId = $_SESSION['user']['id'];
+            $productId = $_SESSION['product_id'];
+            $this->UserBuyProduct->insertUserBuyProduct($userId, $productId);
+        }
+
         $this->render('payment.billcomfim', compact('orderId', 'amount', 'orderInfo', 'transId', 'resultCode', 'message'));
         unset($_SESSION['user_details']);
     }
@@ -60,6 +70,7 @@ class PaymentController extends BaseController
         curl_close($ch);
         return $result;
     }
+
     public function onlineCheckout()
     {
         if (isset($_POST['payUrl'])) {
@@ -77,12 +88,12 @@ class PaymentController extends BaseController
             $orderInfo = "Thanh toán qua MoMo";
             $amount = 10000;
             $orderId = rand(000000, 999999);
-            $redirectUrl = "http://localhost/php/xuongezcode/test/client/home_page";
-            $ipnUrl = "http://localhost/php/xuongezcode/test/client/payment/billcomfim";
+            $redirectUrl = BASE_URL . "client/payment/billcomfim";
+            $ipnUrl = BASE_URL . "client/payment/billcomfim";
             $extraData = "";
 
             $partnerCode = $partnerCode;
-            $accessKey =  $accessKey;
+            $accessKey = $accessKey;
             $serectkey = $secretKey;
             $orderId = $orderId; // Mã đơn hàng
             $orderInfo = $orderInfo;
@@ -134,8 +145,9 @@ class PaymentController extends BaseController
             $message = $_GET['message'] ?? 'Thanh toán sau 15 ngày';
             $transId = rand(000000000, 999999999);
             $queryString = "orderId=$orderId&orderInfo=$orderInfo&resultCode=$resultCode&message=$message&transId=$transId";
-            header("Location: http://localhost/php/xuongezcode/test/client/payment/billcomfim?$queryString");
+            header('Location: ' . BASE_URL . '/client/payment/billcomfim?' . $queryString);
             exit;
         }
     }
 }
+?>

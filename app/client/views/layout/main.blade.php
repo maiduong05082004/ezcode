@@ -18,7 +18,7 @@
         <section class="bg-danger py-2 d-none d-sm-block">
 
             <div class="container"><img src="{{ route('public/assets/img/banner/sales.png') }}" height="51"
-                    width="1450px" alt="" />
+                    width="100%" alt="" />
                 <div class="row align-items-center">
                     <div class="col-auto d-none d-lg-block">
                         <p class="my-2 fs--1"><i class="fas fa-map-marker-alt me-3 text-white"></i><span
@@ -26,7 +26,7 @@
                     </div>
                     <div class="col-auto ms-md-auto order-md-2 d-none d-sm-block">
                         <ul class="list-unstyled list-inline my-2">
-                            <li class="list-inline-item"><a class="text-decoration-none" href="#!"><i
+                            <li class="list-inline-item"><a class="text-decoration-none" href="https://www.facebook.com/profile.php?id=61556742260911"><i
                                         class="fab fa-facebook-f text-900 text-white"></i></a></li>
                             <li class="list-inline-item"><a class="text-decoration-none" href="#!"><i
                                         class="fab fa-pinterest text-900 text-white"></i></a></li>
@@ -51,7 +51,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light sticky-top-mysetup py-3 d-block"
             data-navbar-on-scroll="data-navbar-on-scroll">
-            <div class="container"><a class="navbar-brand" href="{{route('client/home_page')}}"><img
+            <div class="container"><a class="navbar-brand" href="{{ route('') }}"><img
                         src="{{ route('public/assets/img/gallery/logo-n.png') }}" height="45" alt="logo" /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -60,7 +60,7 @@
                 <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto pt-2 pt-lg-0 font-base">
                         <li class="nav-item px-2"><a class="nav-link active" aria-current="page"
-                                href="{{ route('client/home_page') }}">Trang
+                                href="{{ route('') }}">Trang
                                 chủ</a></li>
                         <li class="nav-item px-2"><a class="nav-link" aria-current="page"
                                 href="{{ route('client/product/membership_package') }}">Gói thành viên</a>
@@ -68,47 +68,52 @@
                         <li class="nav-item px-2"><a class="nav-link" aria-current="page"
                                 href="{{ route('client/product/list_product') }}">Các khóa học</a></li>
                         <li class="nav-item px-2">
-                        @if (isset($_SESSION['user']) && is_array($_SESSION['user']))
-                            <a class="nav-link" aria-current="page" href="{{ route('client/product/list_product_by_user/' . $_SESSION['user']['id'])  }}">Khóa đang học</a>
+                            @if (isset($_SESSION['user']) && is_array($_SESSION['user']))
+                                <a class="nav-link" aria-current="page"
+                                    href="{{ route('client/product/list_product_by_user/' . $_SESSION['user']['id']) }}">Khóa
+                                    đang học</a>
                         </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Chào, {{ $_SESSION['user']['name'] }}
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Quên mật khẩu</a></li>
-                                    <li><a class="dropdown-item" href="#">Thông tin cá nhân</a></li>
-                                    <li><a class="dropdown-item" href="#">Khóa học của tôi</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="{{route('client/user/logout')}}">Thoát</a></li>
-                                </ul>
-                            </li>
-                        @else
-                        <a class="nav-link" aria-current="page" href="{{ route('client/product/list_product_by_user/client')  }}">Khóa đang học</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Chào, {{ $_SESSION['user']['name'] }}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{route('client/user/forgetPassword')}}">Quên mật khẩu</a></li>
+                                <li><a class="dropdown-item" href="{{route('client/user/profile')}}">Thông tin cá nhân</a></li>
+                                <li><a class="dropdown-item" href="{{route('client/product/list_product')}}">Khóa học của tôi</a></li>
+                                @if ($_SESSION['user']['role'] == 1)
+                                    <li><a class="dropdown-item" href="{{ route('admin/product/list_product') }}">Trang quản trị</a></li>
+                                @endif
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="{{ route('client/user/logout') }}">Thoát</a></li>
+                            </ul>
                         </li>
-                            <a class="btn btn-primary order-1 order-lg-0 mr-3"
-                                href="{{ route('client/user/register') }}">Đăng
-                                kí</a>
-                            <a class="btn btn-primary order-1 order-lg-0" href="{{ route('client/user/login') }}">Đăng
-                                nhập</a>
+                    @else
+                        <a class="nav-link" aria-current="page"
+                            href="{{ route('client/product/list_product_by_user/client') }}">Khóa đang học</a>
+                        </li>
+                        <a class="btn btn-primary order-1 order-lg-0 me-lg-3 mb-1 mb-lg-0"
+                            href="{{ route('client/user/register') }}">Đăng
+                            kí</a>
+                        <a class="btn btn-primary order-1 order-lg-0" href="{{ route('client/user/login') }}">Đăng
+                            nhập</a>
                         @endif
                     </ul>
-                    <form class="d-flex my-3 d-block d-lg-none">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button class="btn btn-outline-primary" type="submit">Search</button>
-                    </form>
+                    <form class="d-flex my-3 d-block d-lg-none" action="{{ route('client/product/search') }}" method="GET">
+                        <input class="form-control me-2" type="search" name="query" placeholder="Tìm kiếm khóa học" aria-label="Search">
+                        <button class="btn btn-outline-primary" type="submit">Tìm kiếm</button>
+                    </form>       
                     <div class="dropdown d-none d-lg-block">
-                        <button class="btn btn-outline-light ms-2" id="dropdownMenuButton1" type="submit"
-                            data-bs-toggle="dropdown" aria-expanded="false"><i
-                                class="fas fa-search text-800"></i></button>
-                        <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton1"
-                            style="top:55px">
-                            <form>
-                                <input class="form-control" type="search" placeholder="Search"
-                                    aria-label="Search" />
+                        <button class="btn btn-outline-light ms-2" id="dropdownMenuButton1" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-search text-800"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton1" style="top:55px">
+                            <form action="{{ route('client/product/search') }}" method="GET">
+                                <input class="form-control" type="search" name="query" placeholder="Tìm kiếm khóa học" aria-label="Search" required>
                             </form>
                         </ul>
                     </div>
@@ -272,7 +277,7 @@
                         <p class="my-4"> <i class="fas fa-map-marker-alt me-3"></i><span>95 Tu Hoàng - Hà Nội
                                 &nbsp;</span><a href="tel:+84865643858">+84865643858</a><br />Ha Noi, VN 40000</p>
                         <p> <i class="fas fa-envelope me-3"> </i><a
-                                href="contact-henry@gmail.com ">duongmdph40323@fpt.edu.vn </a></p>
+                                href="duongmdph40323@fpt.edu.vn">duongmdph40323@fpt.edu.vn </a></p>
                         <p> <i class="fas fa-phone-alt me-3"></i><a href="tel:1-800-800-2299">0865 643 858
                                 (Support)</a></p>
                     </div>
@@ -321,7 +326,7 @@
         <!-- ============================================-->
 
 
-        <section class="py-0" style="margin-top: -5.8rem;">
+        <div class="py-0" style="margin-top: -5.8rem;">
             <div class="container bg-danger">
                 <div class="row justify-content-md-between justify-content-evenly py-4">
                     <div class="col-12 col-sm-8 col-md-6 col-lg-auto text-center text-md-start">
@@ -339,7 +344,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     </main>
     @include('layout.script')
 </body>

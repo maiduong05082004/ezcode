@@ -9,6 +9,7 @@ use App\Client\Controllers\PaymentController;
 use App\Client\Controllers\ProductController as ClientProductController;
 use Phroute\Phroute\RouteCollector;
 use Phroute\Phroute\Dispatcher;
+
 $url = !isset($_GET['url']) ? "/" : $_GET['url'];
 $router = new RouteCollector();
 /*request method: 
@@ -33,9 +34,7 @@ $router->filter('auth', function () {
 // Khu vực định nghĩa ra các đường dẫn
 //cách định nghĩa :
 //$router->phương thức http('tên route',hàm xử lý)  (cấu hình = ' ') để thành dạng chuỗi
-$router->get('/', function () {
-    return "đây là trang chủ";
-});
+$router->get('/', [HomePageController::class, 'index']);
 $router->group(['prefix' => 'admin'], function ($router) {
     $router->group(['prefix' => 'product'], function ($router) {
         $router->get('list_product', [ProductController::class, 'listProduct']);
@@ -69,18 +68,21 @@ $router->group(['prefix' => 'client'], function ($router) {
         $router->get('membership_package', [ClientProductController::class, 'membership']);
         $router->get('product_detail/{id}', [ClientProductController::class, 'productDetail']);
         $router->get('list_product', [ClientProductController::class, 'listProduct']);
-        $router->get('list_product_by_user/{id}',[ClientProductController::class,'listProductByUser']) ;
+        $router->get('list_product_by_user/{id}', [ClientProductController::class, 'listProductByUser']);
+        $router->get('search', [ClientProductController::class, 'search']);
     });
     $router->group(['prefix' => 'user'], function ($router) {
         $router->any('register', [ClientUserController::class, 'register']);
         $router->any('login', [ClientUserController::class, 'login']);
-        $router->get('logout', [ClientUserController::class,'logout']);
+        $router->get('logout', [ClientUserController::class, 'logout']);
+        $router->get('forgetPassword', [ClientUserController::class, 'forgetPassword']);
+        $router->post('forgetPassword', [ClientUserController::class, 'updatePassword']);
+        $router->get('profile', [ClientUserController::class, 'showProfile']);
     });
     $router->group(['prefix' => 'payment'], function ($router) {
         $router->post('in_payment', [PaymentController::class, 'inPayment']);
         $router->any('online_checkout', [PaymentController::class, 'onlineCheckout']);
         $router->any('billcomfim', [PaymentController::class, 'billcomfim']);
-
     });
 });
 // khu vực cần quan tâm -----------

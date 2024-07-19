@@ -14,5 +14,11 @@ class UserBuyProduct extends BaseModel
         $this->setQuery($query);
         return $this->loadAllRows([$id]);
     }
+    public function insertUserBuyProduct($userId, $productId)
+    {
+        $query = "INSERT INTO `$this->table` (`user_id`, `product_id`) VALUES (?, ?)";
+        $this->setQuery($query);
+        return $this->execute([$userId, $productId]);
+    }
 }
 ?>

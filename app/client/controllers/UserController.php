@@ -38,6 +38,7 @@ class UserController extends BaseController
                 $this->User->insertUser($name, $image, $email, $address, $tel, $password, $username, $membership, $role);
                 echo "<script>alert('Thêm người dùng thành công'); window.location.href='" . BASE_URL . "client/user/login';</script>";
             }
+            
         }
         $this->render('user.register');
     }
@@ -57,7 +58,7 @@ class UserController extends BaseController
                     if ($_SESSION['user']['role'] == 1) {
                         header("Location: " . BASE_URL . "admin/product/list_product");
                     } else {
-                        echo "<script> window.history.back(); </script>";
+                        header("Location: " . BASE_URL . "");
                     }
                 } else {
                     $thongbao = "Tài khoản hoặc mật khẩu không đúng!";
@@ -65,6 +66,69 @@ class UserController extends BaseController
             }
         }
         $this->render('user.login', ['thongbao' => $thongbao]);
+    }
+    public function forgetPassword()
+    {
+        $this->render('user.forgetPassword');
+    }
+    
+    public function updatePassword()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $currentPassword = $_POST['currentPassword'] ?? '';
+            $newPassword = $_POST['newPassword'] ?? '';
+            $confirmNewPassword = $_POST['confirmNewPassword'] ?? '';
+
+            // Kiểm tra xem người dùng có đăng nhập không và lấy thông tin người dùng
+            $user = $_SESSION['user'] ?? null;
+            if (!$user) {
+                echo "<script>alert('Bạn cần đăng nhập để thực hiện thay đổi này.'); window.location.href='" . BASE_URL . "client/user/login';</script>";
+                return;
+            }
+
+            // Kiểm tra mật khẩu hiện tại
+            if (!$this->User->checkPassword($user['id'], $currentPassword)) {
+                echo "<script>alert('Mật khẩu hiện tại không chính xác.'); window.location.href='" . BASE_URL . "client/user/forgetPassword';</script>";
+                return;
+            }
+
+            // Kiểm tra mật khẩu mới và xác nhận mật khẩu
+            if ($newPassword !== $confirmNewPassword) {
+                echo "<script>alert('Mật khẩu mới và xác nhận mật khẩu không khớp.'); window.location.href='" . BASE_URL . "client/user/forgetPassword';</script>";
+                return;
+            }
+
+            // Điều kiện để mật khẩu mới hợp lệ
+            if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $newPassword)) {
+                echo "<script>alert('Mật khẩu mới phải có ít nhất 8 ký tự, bao gồm ít nhất một chữ hoa, một chữ thường, một số, và một ký tự đặc biệt.'); window.location.href='" . BASE_URL . "client/user/forgetPassword';</script>";
+                return;
+            }
+
+            // Cập nhật mật khẩu mới
+            if ($this->User->updatePassword($user['id'], $newPassword)) {
+                echo "<script>alert('Mật khẩu đã được cập nhật thành công.'); window.location.href='" . BASE_URL . "';</script>";
+            } else {
+                echo "<script>alert('Đã xảy ra lỗi, không thể cập nhật mật khẩu.'); window.location.href='" . BASE_URL . "client/user/forgetPassword';</script>";
+            }
+        } else {
+            // Hiển thị form nếu không phải POST
+            $this->render('user.forgetPassword');
+        }
+    }
+    public function showProfile()
+    {
+        // Kiểm tra xem người dùng đã đăng nhập chưa
+        if (!isset($_SESSION['user'])) {
+            header('Location: ' . BASE_URL . 'client/user/login');
+            exit;
+        }
+
+        // Lấy thông tin người dùng từ session
+        $userId = $_SESSION['user']['id'];
+        $User = $this->User->loadOneUser($userId);
+        
+        // Truyền thông tin người dùng tới view
+        $this->render('user.profile', compact('User'));
     }
     public function logout(){
         session_unset();

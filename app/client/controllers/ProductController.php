@@ -51,5 +51,14 @@ class ProductController extends BaseController
     
         $this->render('product.listProductByUser', compact('Products', 'User', 'message'));
     }
-    
+    public function search()
+    {
+        $query = $_GET['query'] ?? '';
+        if ($query) {
+            $Products = $this->Product->searchProducts($query);
+        } else {
+            $Products = [];
+        }
+        $this->render('product.searchResults', compact('Products', 'query'));
+    }
 }

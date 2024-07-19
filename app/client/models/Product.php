@@ -58,6 +58,12 @@ class Product extends BaseModel
         $this->setQuery($query);
         return $this->loadAllRows([$categoryId]);
     }
-    
+    public function searchProducts($query)
+    {
+        $query = "%$query%";
+        $sql = "SELECT * FROM $this->table WHERE name LIKE ? OR `describe` LIKE ?";
+        $this->setQuery($sql);
+        return $this->loadAllRows([$query, $query]);
+    }
 }
 ?>

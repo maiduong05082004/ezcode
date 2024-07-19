@@ -98,14 +98,14 @@
                                 <li class="list-group-item text-center">
                                     <form method="POST" action="{{ route('client/payment/in_payment') }}">
                                         <input type="hidden" name="product_id" value="{{ $Product->id }}">
-                                        <button type="submit" class="btn btn-warning">Đăng kí khóa học ngay</button>
+                                        <button type="submit" class="btn btn-warning">Đăng ký khóa học ngay</button>
                                     </form>
                                 </li>
                                 <li class="list-group-item text-center"><img
                                         src="{{ route('public/assets/img/gallery/searching.png') }}" width="78"
                                         alt="..." />
                                     <p class="text-muted mb-0 mt-4">Liên hệ với bộ phận hỗ trợ khách hàng tại</p><a
-                                        class="text-info" href="contact-henry@gmail.com ">contact-henry@gmail.com</a>
+                                        class="text-info" href="duongmdph40323@fpt.edu.vn">duongmdph40323@fpt.edu.vn</a>
                                 </li>
                             </ul>
                         </div>
@@ -116,9 +116,9 @@
             <div class="container mt-4">
                 <div class="row">
                     <div class="col ms-2">
-                        <form method="POST" action="{{ route('client/payment/in_payment') }}">
+                        <form class="d-none d-md-block" method="POST" action="{{ route('client/payment/in_payment') }}">
                             <input type="hidden" name="product_id" value="{{ $Product->id }}">
-                            <button type="submit" class="btn btn-warning p-3">Đăng kí khóa học ngay</button>
+                            <button type="submit" class="btn btn-warning p-3">Đăng ký khóa học ngay</button>
                         </form>
                     </div>
                 </div>

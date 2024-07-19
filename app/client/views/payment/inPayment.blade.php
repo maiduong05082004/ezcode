@@ -29,9 +29,9 @@
 
             <div class="container">
                 <div class="row">
-                    <div class="col-md-8"><img class="w-100" src="{{ route($hinhpart) }}" alt="..." />
+                    <div class="col-md-6 col-lg-8"><img class="w-100" src="{{ route($hinhpart) }}" alt="..." />
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6 col-lg-4">
                         <form onsubmit="return comfirm('Xác nhận đặt hàng')" method="POST"
                             action="{{ route('client/payment/online_checkout') }}">
                             <div class="card">
@@ -58,8 +58,10 @@
                                             class="border-none border-bottom-custom b-n-f" id="tel" name="tel"
                                             value="{{ $User->tel }}" /></li>
                                     <li class="list-group-item text-center">
-                                        <input type="submit" class="btn btn-primary" name="payUrl" value="Thanh toán với MOMO">
-                                        <input type="submit" class="btn btn-primary" name="COD" value="Thanh toán bằng COD">
+                                        <input type="submit" class="btn btn-primary w-100 w-lg-0 mb-1" name="payUrl"
+                                            value="Thanh toán với MOMO">
+                                        <input type="submit" class="btn btn-primary w-100" name="COD"
+                                            value="Thanh toán bằng COD">
                                     </li>
                                 </ul>
                             </div>

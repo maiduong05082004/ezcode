@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="{{ BASE_URL.'public/assets/css/theme.css' }}">
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+{{-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet"> --}}
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 <link rel="apple-touch-icon" sizes="180x180" href="{{ route('public/assets/img/favicons/apple-touch-icon.png')}}">
 <link rel="icon" type="image/png" sizes="32x32" href="{{ route('public/assets/img/favicons/favicon-32x32.png')}}">

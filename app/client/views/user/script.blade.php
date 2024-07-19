@@ -25,4 +25,18 @@
             });
         }
     });
+    function validatePasswords() {
+    const newPassword = document.getElementById('newPassword').value;
+    const confirmNewPassword = document.getElementById('confirmNewPassword').value;
+
+    if (newPassword !== confirmNewPassword) {
+        alert('Mật khẩu mới và xác nhận mật khẩu không khớp.');
+        return false;
+    }
+    if (newPassword.length < 8 || newPassword.length > 20) {
+        alert('Mật khẩu phải từ 8-20 ký tự.');
+        return false;
+    }
+    return true;
+}
 </script>
