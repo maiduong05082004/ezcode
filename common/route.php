@@ -4,7 +4,7 @@ use App\Admin\Controllers\CategoryController;
 use App\Admin\Controllers\ProductController;
 use App\Admin\Controllers\UserController;
 use App\Client\Controllers\UserController as  ClientUserController;
-use App\Client\Controllers\HomePageController;
+use App\Client\Controllers\HomepageController;
 use App\Client\Controllers\PaymentController;
 use App\Client\Controllers\ProductController as ClientProductController;
 use Phroute\Phroute\RouteCollector;
@@ -34,7 +34,7 @@ $router->filter('auth', function () {
 // Khu vực định nghĩa ra các đường dẫn
 //cách định nghĩa :
 //$router->phương thức http('tên route',hàm xử lý)  (cấu hình = ' ') để thành dạng chuỗi
-$router->get('/', [HomePageController::class, 'index']);
+$router->get('/', [HomepageController::class, 'index']);
 $router->group(['prefix' => 'admin'], function ($router) {
     $router->group(['prefix' => 'product'], function ($router) {
         $router->get('list_product', [ProductController::class, 'listProduct']);
@@ -63,7 +63,7 @@ $router->group(['prefix' => 'admin'], function ($router) {
     });
 });
 $router->group(['prefix' => 'client'], function ($router) {
-    $router->get('home_page', [HomePageController::class, 'index']);
+    $router->get('home_page', [HomepageController::class, 'index']);
     $router->group(['prefix' => 'product'], function ($router) {
         $router->get('membership_package', [ClientProductController::class, 'membership']);
         $router->get('product_detail/{id}', [ClientProductController::class, 'productDetail']);
@@ -94,3 +94,5 @@ $response = $dispatcher->dispatch($_SERVER['REQUEST_METHOD'], $url);
 
 // Print out the value returned from the dispatched function
 echo $response;
+
+?>

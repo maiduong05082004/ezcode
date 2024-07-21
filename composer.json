@@ -2,8 +2,7 @@
     "name": "admin/test",
     "autoload": {
         "psr-4": {
-            "App\\Admin\\": ["app/admin"],
-            "App\\Client\\": ["app/client"]
+            "App\\": "app/"
         }
     },
     "authors": [

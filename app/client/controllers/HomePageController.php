@@ -2,7 +2,7 @@
 
 namespace App\Client\Controllers;
 use App\Client\Models\{Product,Category,User};
-class HomePageController extends BaseController
+class HomepageController extends BaseController
 {
     protected $Category;
     protected $Product;
@@ -15,7 +15,7 @@ class HomePageController extends BaseController
     }  
     public function index() {
         $Products = $this->Product->getProductTop9();
-        $this->render( 'homePage.homePage' ,compact('Products'));
+        $this->render( 'homepage.homepage' ,compact('Products'));
     }
 
 }
